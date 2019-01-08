@@ -89,12 +89,26 @@ alias yad='yarn add --dev'
 alias yr='yarn remove'
 alias yl='yarn list --pattern'
 
+##########################################
+# Env variable
+##########################################
 # Android Studio
 set -xg ANDROID_HOME $HOME/Library/Android/sdk
-set -xg PATH $PATH $ANDROID_HOME/tools
-set -xg PATH $PATH $ANDROID_HOME/tools/bin
-set -xg PATH $PATH $ANDROID_HOME/platform-tools
-set -xg PATH $PATH $ANDROID_HOME/emulator
 
-# start the shell editor in vim mode
+##########################################
+# Update PATH
+##########################################
+function add_path_if_not_exist
+    if not contains $argv $PATH
+        set -xg PATH $PATH $argv
+    end
+end
+
+for dir in tools tools/bin platform-tools emulator
+    add_path_if_not_exist $ANDROID_HOME/$dir
+end
+
+##########################################
+# Start the shell editor in vim mode
+##########################################
 fish_vi_key_bindings
