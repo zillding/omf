@@ -93,7 +93,7 @@ alias yl='yarn list --pattern'
 # Env variable
 ##########################################
 if command -sq /usr/libexec/java_home
-    set -xg JAVA_HOME (/usr/libexec/java_home)
+	set -xg JAVA_HOME (/usr/libexec/java_home)
 end
 # Android Studio
 set -xg ANDROID_HOME $HOME/Library/Android/sdk
@@ -102,13 +102,13 @@ set -xg ANDROID_HOME $HOME/Library/Android/sdk
 # Update PATH
 ##########################################
 function add_path_if_not_exist
-    if not contains $argv $PATH
-        set -xg PATH $PATH $argv
-    end
+	if not contains $argv $PATH
+		set -xg PATH $PATH $argv
+	end
 end
 
 for dir in tools tools/bin platform-tools emulator
-    add_path_if_not_exist $ANDROID_HOME/$dir
+	add_path_if_not_exist $ANDROID_HOME/$dir
 end
 
 ##########################################
