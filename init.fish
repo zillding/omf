@@ -92,6 +92,9 @@ alias yl='yarn list --pattern'
 ##########################################
 # Env variable
 ##########################################
+if command -sq /usr/libexec/java_home
+    set -xg JAVA_HOME (/usr/libexec/java_home)
+end
 # Android Studio
 set -xg ANDROID_HOME $HOME/Library/Android/sdk
 
