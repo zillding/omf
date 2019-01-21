@@ -107,6 +107,8 @@ function add_path_if_not_exist
 	end
 end
 
+add_path_if_not_exist $JAVA_HOME/bin
+
 for dir in tools tools/bin platform-tools emulator
 	add_path_if_not_exist $ANDROID_HOME/$dir
 end
