@@ -71,7 +71,7 @@ alias go='git checkout'
 
 # npm
 alias ni='npm install'
-alias nis='npm install --save'
+alias nid='npm install --save-dev'
 alias nig='npm install --global'
 alias nu='npm uninstall'
 alias nug='npm uninstall --global'
