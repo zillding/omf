@@ -107,6 +107,7 @@ function add_path_if_not_exist
 	end
 end
 
+add_path_if_not_exist $HOME/.rbenv/shims
 add_path_if_not_exist $JAVA_HOME/bin
 
 for dir in tools tools/bin platform-tools emulator
