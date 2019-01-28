@@ -90,16 +90,7 @@ alias yr='yarn remove'
 alias yl='yarn list --pattern'
 
 ##########################################
-# Env variable
-##########################################
-if command -sq /usr/libexec/java_home
-	set -xg JAVA_HOME (/usr/libexec/java_home)
-end
-# Android Studio
-set -xg ANDROID_HOME $HOME/Library/Android/sdk
-
-##########################################
-# Update PATH
+# Util functions
 ##########################################
 function add_path_if_not_exist
 	if not contains $argv $PATH
@@ -107,11 +98,28 @@ function add_path_if_not_exist
 	end
 end
 
-add_path_if_not_exist $HOME/.rbenv/shims
-add_path_if_not_exist $JAVA_HOME/bin
+##########################################
+# Additional set up
+##########################################
+# java
+if command -sq /usr/libexec/java_home
+	set -xg JAVA_HOME (/usr/libexec/java_home)
+	add_path_if_not_exist $JAVA_HOME/bin
+end
 
-for dir in tools tools/bin platform-tools emulator
-	add_path_if_not_exist $ANDROID_HOME/$dir
+# Android Studio
+if test -d $HOME/Library/Android/sdk
+	set -xg ANDROID_HOME $HOME/Library/Android/sdk
+	for dir in tools tools/bin platform-tools emulator
+		if test -d $ANDROID_HOME/$dir
+			add_path_if_not_exist $ANDROID_HOME/$dir
+		end
+	end
+end
+
+# rbenv
+if command -sq rbenv
+	add_path_if_not_exist $HOME/.rbenv/shims
 end
 
 ##########################################
