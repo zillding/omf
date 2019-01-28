@@ -103,7 +103,7 @@ set -xg ANDROID_HOME $HOME/Library/Android/sdk
 ##########################################
 function add_path_if_not_exist
 	if not contains $argv $PATH
-		set -xg PATH $PATH $argv
+		set -xg PATH $argv $PATH
 	end
 end
 
