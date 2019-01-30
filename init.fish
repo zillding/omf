@@ -102,7 +102,7 @@ end
 # Additional set up
 ##########################################
 # java
-if command -sq /usr/libexec/java_home
+if command -sq /usr/libexec/java_home; and test -d (/usr/libexec/java_home)
 	set -xg JAVA_HOME (/usr/libexec/java_home)
 	add_path_if_not_exist $JAVA_HOME/bin
 end
