@@ -101,6 +101,11 @@ end
 ##########################################
 # Additional set up
 ##########################################
+# homebrew
+if test -d /usr/local/sbin; and test 0 -lt (count (ls /usr/local/sbin))
+	add_path_if_not_exist /usr/local/sbin
+end
+
 # java
 if command -sq /usr/libexec/java_home; and test -d (/usr/libexec/java_home)
 	set -xg JAVA_HOME (/usr/libexec/java_home)
