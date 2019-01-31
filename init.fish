@@ -107,7 +107,10 @@ if test -d /usr/local/sbin; and test 0 -lt (count (ls /usr/local/sbin))
 end
 
 # java
-if command -sq /usr/libexec/java_home; and test -d (/usr/libexec/java_home)
+set jvm_dir /Library/Java/JavaVirtualMachines
+if test -d $jvm_dir;\
+	and test 0 -lt (count (ls $jvm_dir));\
+	and command -sq /usr/libexec/java_home
 	set -xg JAVA_HOME (/usr/libexec/java_home)
 	add_path_if_not_exist $JAVA_HOME/bin
 end
