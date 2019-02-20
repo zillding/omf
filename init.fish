@@ -128,6 +128,9 @@ if command -sq rbenv
 	add_path_if_not_exist $HOME/.rbenv/shims
 end
 
+# flutter
+add_path_if_not_exist $HOME/Developer/flutter/bin
+
 ##########################################
 # Start the shell editor in vim mode
 ##########################################
