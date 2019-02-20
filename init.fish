@@ -93,7 +93,9 @@ alias yl='yarn list --pattern'
 # Util functions
 ##########################################
 function add_path_if_not_exist
-	if not contains $argv $PATH
+	if test -d $argv;\
+		and test 2 -lt (count (ls -a $argv));\
+		and not contains $argv $PATH
 		set -xg PATH $argv $PATH
 	end
 end
@@ -102,9 +104,7 @@ end
 # Additional set up
 ##########################################
 # homebrew
-if test -d /usr/local/sbin; and test 0 -lt (count (ls /usr/local/sbin))
-	add_path_if_not_exist /usr/local/sbin
-end
+add_path_if_not_exist /usr/local/sbin
 
 # java
 set jvm_dir /Library/Java/JavaVirtualMachines
@@ -119,9 +119,7 @@ end
 if test -d $HOME/Library/Android/sdk
 	set -xg ANDROID_HOME $HOME/Library/Android/sdk
 	for dir in tools tools/bin platform-tools emulator
-		if test -d $ANDROID_HOME/$dir
-			add_path_if_not_exist $ANDROID_HOME/$dir
-		end
+		add_path_if_not_exist $ANDROID_HOME/$dir
 	end
 end
 
