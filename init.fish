@@ -63,6 +63,7 @@ alias gc='git commit'
 alias gp='git push'
 
 alias gl='git log --oneline --graph --all --decorate'
+alias gf='git fetch -p'
 alias gpull='git pull'
 alias gh='git --help'
 alias gs='git status -s'
