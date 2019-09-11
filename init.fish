@@ -132,6 +132,11 @@ end
 # flutter
 add_path_if_not_exist $HOME/Developer/flutter/bin
 
+# The next line updates PATH for the Google Cloud SDK.
+if test -e $HOME/Developer/google-cloud-sdk/path.fish.inc
+	. $HOME/Developer/google-cloud-sdk/path.fish.inc
+end
+
 ##########################################
 # Start the shell editor in vim mode
 ##########################################
