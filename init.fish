@@ -68,7 +68,6 @@ alias gpull='git pull'
 alias gh='git --help'
 alias gs='git status -s'
 alias gd='git diff'
-alias go='git checkout'
 
 # npm
 alias ni='npm install'
