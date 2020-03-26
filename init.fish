@@ -1,4 +1,4 @@
-# handy short cuts #
+# handy short cuts
 alias c='clear'
 alias cp='cp -i'
 alias df='df -h'
@@ -11,15 +11,15 @@ alias mkdir='mkdir -p'
 alias ql='qlmanage -p'
 alias rm='rm -i'
 
-## Use a long listing format ##
+# Use a long listing format
 alias ll='ls -lh'
 alias lla='ls -lah'
 alias lh='ls -h'
-## Show hidden files ##
+# Show hidden files
 alias l.='ls -d .*'
 alias la='ls -ah'
 
-## a quick way to get out of current directory ##
+# a quick way to get out of current directory
 alias ..='cd ..'
 alias ...='cd ../../../'
 alias ....='cd ../../../../'
@@ -27,7 +27,7 @@ alias .....='cd ../../../../'
 alias .4='cd ../../../../'
 alias .5='cd ../../../../..'
 
-## Colorize the grep command output for ease of use (good for log files)##
+# Colorize the grep command output for ease of use (good for log files)
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -37,15 +37,15 @@ alias nowtime=now
 alias nowdate='date +"%d-%m-%Y"'
 
 # Control output of networking tool called ping
-# Stop after sending count ECHO_REQUEST packets #
+# Stop after sending count ECHO_REQUEST packets
 alias ping='ping -c 5'
-# Do not wait interval 1 second, go fast #
+# Do not wait interval 1 second, go fast
 alias fastping='ping -c 100 -s.2'
 
 # Show open ports
 alias ports='netstat -tulanp'
 
-# become root #
+# become root
 alias root='sudo -i'
 alias su='sudo -i'
 
