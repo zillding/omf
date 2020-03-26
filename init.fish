@@ -1,19 +1,20 @@
-##########################################
-# Set up aliases
-##########################################
-alias ql='qlmanage -p'
-alias rm='rm -i'
+# handy short cuts #
 alias c='clear'
-
+alias cp='cp -i'
 alias df='df -h'
 alias du='du -h'
+alias h='history'
+alias j='jobs -l'
+alias ln='ln -i'
+alias mv='mv -i'
 alias mkdir='mkdir -p'
+alias ql='qlmanage -p'
+alias rm='rm -i'
 
 ## Use a long listing format ##
 alias ll='ls -lh'
 alias lla='ls -lah'
 alias lh='ls -h'
-
 ## Show hidden files ##
 alias l.='ls -d .*'
 alias la='ls -ah'
@@ -31,10 +32,6 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
-# handy short cuts #
-alias h='history'
-alias j='jobs -l'
-
 # Create a new set of commands
 alias nowtime=now
 alias nowdate='date +"%d-%m-%Y"'
@@ -48,26 +45,24 @@ alias fastping='ping -c 100 -s.2'
 # Show open ports
 alias ports='netstat -tulanp'
 
-# confirmation #
-alias mv='mv -i'
-alias cp='cp -i'
-alias ln='ln -i'
-
 # become root #
 alias root='sudo -i'
 alias su='sudo -i'
 
-# Aliases -- Git:
+# git:
 alias ga='git add'
 alias gc='git commit'
 alias gp='git push'
-
 alias gl='git log --oneline --graph --all --decorate'
 alias gf='git fetch -p'
 alias gpull='git pull'
 alias gh='git --help'
 alias gs='git status -s'
 alias gd='git diff'
+function gb
+	git checkout -b $argv master;
+	git rebase origin/master
+end
 
 # npm
 alias ni='npm install'
@@ -79,7 +74,6 @@ alias nt='npm test'
 alias nk='npm link'
 alias nr='npm run'
 alias ns='npm start'
-
 # npm-run
 alias r='npm-run'
 
@@ -89,10 +83,7 @@ alias yad='yarn add --dev'
 alias yr='yarn remove'
 alias yl='yarn list --pattern'
 
-##########################################
-# Util functions
-##########################################
-function add_path_if_not_exist
+function _add_path_if_not_exist
 	if test -d $argv;\
 		and test 2 -lt (count (ls -a $argv));\
 		and not contains $argv $PATH
@@ -100,11 +91,8 @@ function add_path_if_not_exist
 	end
 end
 
-##########################################
-# Additional set up
-##########################################
 # homebrew
-add_path_if_not_exist /usr/local/sbin
+_add_path_if_not_exist /usr/local/sbin
 
 # java
 set jvm_dir /Library/Java/JavaVirtualMachines
@@ -112,31 +100,29 @@ if test -d $jvm_dir;\
 	and test 0 -lt (count (ls $jvm_dir));\
 	and command -sq /usr/libexec/java_home
 	set -xg JAVA_HOME (/usr/libexec/java_home)
-	add_path_if_not_exist $JAVA_HOME/bin
+	_add_path_if_not_exist $JAVA_HOME/bin
 end
 
 # Android Studio
 if test -d $HOME/Library/Android/sdk
 	set -xg ANDROID_HOME $HOME/Library/Android/sdk
 	for dir in tools tools/bin platform-tools emulator
-		add_path_if_not_exist $ANDROID_HOME/$dir
+		_add_path_if_not_exist $ANDROID_HOME/$dir
 	end
 end
 
 # rbenv
 if command -sq rbenv
-	add_path_if_not_exist $HOME/.rbenv/shims
+	_add_path_if_not_exist $HOME/.rbenv/shims
 end
 
 # flutter
-add_path_if_not_exist $HOME/Developer/flutter/bin
+_add_path_if_not_exist $HOME/Developer/flutter/bin
 
 # The next line updates PATH for the Google Cloud SDK.
 if test -e $HOME/Developer/google-cloud-sdk/path.fish.inc
 	. $HOME/Developer/google-cloud-sdk/path.fish.inc
 end
 
-##########################################
 # Start the shell editor in vim mode
-##########################################
 fish_vi_key_bindings
