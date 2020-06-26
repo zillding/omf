@@ -60,8 +60,10 @@ alias gh='git --help'
 alias gs='git status -s'
 alias gd='git diff'
 function gb
+	git stash
 	git checkout -b $argv master;
 	git rebase origin/master
+	git stash pop
 end
 
 # npm
