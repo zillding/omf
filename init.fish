@@ -75,7 +75,7 @@ alias nk='npm link'
 alias nr='npm run'
 alias ns='npm start'
 # npm-run
-alias r='npm-run'
+alias r='npx'
 
 # yarn
 alias ya='yarn add'
